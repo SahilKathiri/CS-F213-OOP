@@ -26,7 +26,11 @@ public class MaxMinAvg {
     public static void main(String[] args) {
         int[] list = new int[args.length];
 
-        for (int i = 0; i < args.length; i++) {    //Converts the string array into integer array
+<<<<<<< HEAD
+        for (int i = 0; i < args.length; i++) { 
+=======
+        for (int i = 0; i < args.length; i++) {
+>>>>>>> 9e18ad4619ea7c48a95effaa7f9fd0d177569bfe
             list[i] = Integer.parseInt(args[i]);
         }
 
