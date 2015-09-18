@@ -1,8 +1,5 @@
 package Tutorial_2;
-/*
- * Not finished yet.
- * Need some time to think what is wrong with this.
- */
+
 public class ComplexTester {
     public static void main(String[] args) {
         Complex c1 = new Complex(1, 3); //1=>real, 3=>imag
@@ -12,7 +9,7 @@ public class ComplexTester {
 
         c1.add(c2);  // c1 = c1 + c2;
         c1.add(3, 6); // c1 = c1 + complex(3,6);
-        c4 = c1.add(c3); //c4 = c1 + c3
+        c4 = c1.add1(c3); //c4 = c1 + c3
         c1.display();
         c4.display();
     }
@@ -50,17 +47,21 @@ class Complex {
 
     public Complex() {}
 
-    public Complex add(Complex z) {
-        Complex x = new Complex(this);
-
+    public void add(Complex z) {
         this.r += z.r;
         this.i += z.i;
-
-        return z;
     }
     public  void add(double r, double i) {
         this.r += r;
         this.i += i;
+    }
+    public Complex add1(Complex z) {
+        Complex result = new Complex();
+
+        result.r = this.r + z.r;
+        result.i = this.i + z.i;
+
+        return result;
     }
 
     public void sub(Complex z) {
@@ -72,12 +73,37 @@ class Complex {
         this.i -= i;
     }
 
-    public void mul(Complex z) {
-
+    public Complex mul(double r, double i) {
+        Complex z = new Complex();
+        z.r = this.r * r - this.i * i;
+        z.i = this.r * i + this.i * r;
+        return z;
     }
+    public Complex mul(Complex z) {
+        Complex result = new Complex();
+        result.r = this.r * z.r - this.i * z.i;
+        result.i = this.r * z.i + this.i * z.r;
+        return result;
+    }
+
+    public Complex div(double r, double i) {
+        Complex result = new Complex();
+        result.r = (this.r*r + this.i*i)/(r*r + i*i);
+        result.i = (this.i*r - this.r*i)/(r*r + i*i);
+        return result;
+    }
+    public Complex div(Complex z) {
+        Complex result = new Complex();
+        result.r = (this.r*z.r + this.i*z.i)/(z.r*z.r + z.i*z.i);
+        result.i = (this.i*z.r - this.r*z.i)/(z.r*z.r + z.i*z.i);
+        return result;
+    }
+
+
 
     public void display() {
         System.out.println(r + " + " + i + "i");
     }
+
 
 }
